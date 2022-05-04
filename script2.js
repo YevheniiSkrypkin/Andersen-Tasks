@@ -1,5 +1,5 @@
-let num1 = +prompt('Enter a number');
-let num2 = +prompt('Enter a second number');
+const num1 = +prompt('Enter a number');
+const num2 = +prompt('Enter a second number');
 
 function sumQuot(arg1, arg2) {
     if (isNaN(arg1) || isNaN(arg2)) {
