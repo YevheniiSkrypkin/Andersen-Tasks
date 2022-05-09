@@ -22,7 +22,6 @@ function makeObjectDeepCopy(obj){
 };
 makeObjectDeepCopy(ORIGIN);
 
-
 function selectFromInterval(array, num1, num2) {
     const arrToReturn = [];
     if(!Array.isArray(array)){
