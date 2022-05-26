@@ -1,61 +1,94 @@
-class Stack {
-  constructor(size = 10) {
-    this.count = 0;
-    this.storage = {};
-    this.size = size;
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  };
+};
 
-    const sizeValid = typeof size === 'bigint' || isNaN(size) || !isFinite(size);
+class Stack {
+  constructor(maxSize = 10) {
+    this.first = null;
+    this.last = null;
+    this.size = 0;
+    this.maxSize = maxSize;
+
+    const sizeValid = typeof maxSize === 'bigint' || isNaN(maxSize) || !isFinite(maxSize);
 
     if (sizeValid) {
       throw new Error('Check that number is valid or stack oversize');
     };
   };
 
-  push(value) {
-    if (this.count >= this.size) {
-      throw new Error ('Stack is full');
+  push(value){
+    if(this.size >= this.maxSize) {
+      throw new Error('Stack is full')
+    }
+    let node = new Node(value);
+
+    if (!this.first) {
+      this.first = node;
+      this.last = node;
+    }
+    else {
+      let temp = this.first;
+
+      this.first = node;
+      this.first.next = temp;
     };
-    
-    this.storage[this.count] = value;
-    this.count++;
-  } 
-      
-  pop() {
-    if (this.count === 0) throw new Error('Stack is empty');
-    this.count--;
-    let result = this.storage[this.count];
-    delete this.storage[this.count];
-    return result;
-  }
+
+    this.size++;
+    return this.size;
+  };
+
+  pop(){
+    if (!this.first) {
+      throw new Error('Stack is empty')
+    };
+
+    let temp = this.first;
+
+    if (this.first === this.last) {
+      this.last = null;
+    };
+
+    this.first = this.first.next;
+    this.size--;
+
+    return temp.value;
+  };
 
   peek() {
-    if (this.size === 0 ) {
+    if (!this.first) {
       return null;
     };
-    return this.storage[this.count - 1];
+
+    return this.first.value; 
   };
 
   isEmpty() {
-    return this.count === 0 ? true : false;
+    if (this.size === 0) return true;
+
+    return false;
   };
 
   toArray() {
     const array = [];
+    const objects = this.first;
 
-    const iterate = (object) => {
-      Object.keys(object).forEach(key => {
-        if (object[key] === null) return;
+    const iterate = (objects) => {
+      Object.keys(objects).forEach(key => {
+        if (objects[key] === null) return;
 
-        if (typeof object[key] === 'object' && object[key] !== null) {
-          iterate(object[key]);
+        if (typeof objects[key] === 'object' && objects[key] !== null) {
+          iterate(objects[key]);
         }
         else {
-          array.push(`${object[key]}`);
+          array.push(`${objects[key]}`);
         };
-      })        
+      })
     };
-    
-    iterate(this.storage);
+
+    iterate(objects);
 
     return array;
   };
@@ -72,11 +105,12 @@ class Stack {
     const newStack = new Stack();
 
     for (let el of iterable) {
-      newStack.push(el);
+      newStack.push(el)
     };
 
     return newStack;
   };
 };
 
+module.exports = { Node };
 module.exports = { Stack };
