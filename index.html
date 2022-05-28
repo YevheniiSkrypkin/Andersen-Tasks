@@ -4,9 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="index.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
-    <script src="stack.js"></script>
+    <div class="container">
+        <div class="calc">
+            <div class="output-num">
+                <div data-previous-operand class="previous-operand"></div>
+                <div data-current-operand class="current-operand"></div>
+            </div>
+            <div>
+                <div class="row-wrapper">
+                    <div><button data-ms>MSave</button></div>
+                    <div><button data-mr>MRead</button></div>
+                    <div><button data-mplus>M+</button></div>
+                    <div><button data-mminus>M-</button></div>
+                    <div><button data-mclear>MClear</button></div>
+                </div>
+                <div class="row-wrapper">
+                    <div class="btn-style"><button data-num >1</button></div>
+                    <div><button data-num>2</button></div>
+                    <div><button data-num>3</button></div>
+                    <div><button data-num>4</button></div>
+                    <div><button data-num>5</button></div>
+                </div>
+                <div class="row-wrapper">
+                    <div><button data-num>6</button></div>
+                    <div><button data-num>7</button></div>
+                    <div><button data-num>8</button></div>
+                    <div><button data-num>9</button></div>
+                    <div><button data-num>0</button></div>
+                </div>
+                <div class="row-wrapper">
+                    <div><button data-func>+</button></div>
+                    <div><button data-func>-</button></div>
+                    <div><button data-func>*</button></div>
+                    <div><button data-func>÷</button></div>
+                    <div><button data-change>+/-</button></div>
+                </div>
+                <div class="row-wrapper">
+                    <div><button data-clear>C</button></div>
+                    <div><button data-del>Del</button></div>
+                    <div><button data-num><b>.</b></button></div>
+                    <div><button data-equals>=</button></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
 </body>
+<script src="calc.js"></script>
 </html>
